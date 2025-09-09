@@ -1,0 +1,43 @@
+{
+  "name": "@knowledge-transfer/cli",
+  "version": "1.0.0-alpha",
+  "description": "AI-optimized Knowledge Transfer Protocol management system",
+  "main": "kt-cli.js",
+  "bin": {
+    "kt-cli": "./kt-cli.js"
+  },
+  "scripts": {
+    "test": "node test/test-cli.js",
+    "install-global": "npm install -g .",
+    "uninstall-global": "npm uninstall -g @knowledge-transfer/cli"
+  },
+  "keywords": [
+    "knowledge-transfer",
+    "protocols",
+    "ai-assistant",
+    "project-management",
+    "best-practices",
+    "cli"
+  ],
+  "author": "Knowledge Transfer Protocol Evolution Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knowledge-transfer-protocols/kt-cli.git"
+  },
+  "homepage": "https://github.com/knowledge-transfer-protocols/kt-cli#readme",
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "kt_protocols": {
+    "version": "1.0.0",
+    "type": "core-cli",
+    "features": [
+      "ai-context-generation",
+      "protocol-synchronization",
+      "knowledge-evolution",
+      "project-initialization"
+    ]
+  }
+}
