@@ -338,6 +338,237 @@ Record improvements and lessons learned:
   }
 
   /**
+   * Create basic Knowledge Transfer Protocols when source not available
+   */
+  createBasicProtocols(targetPath) {
+    if (!fs.existsSync(targetPath)) {
+      fs.mkdirSync(targetPath, { recursive: true });
+    }
+
+    // Create CodeOrganizationFramework.md
+    const codeOrgContent = `# Code Organization Framework
+
+## Universal Project Structure
+
+This framework provides proven directory organization patterns that work across any technology stack.
+
+### Core Principles
+
+1. **Separation of Concerns**: Each directory has a single, clear purpose
+2. **Predictable Structure**: Anyone can navigate the project intuitively
+3. **Scalable Organization**: Structure grows gracefully with project complexity
+
+### Standard Directory Structure
+
+\`\`\`
+project-root/
+├── src/                    # Core application logic
+├── tests/                  # Testing framework and test files
+├── docs/                   # Documentation and guides
+├── public/                 # Static assets and frontend files
+├── data/                   # Data files and storage
+├── scripts/                # Build, deployment, and utility scripts
+├── BestPractices/          # Knowledge Transfer Protocols
+│   ├── Generic/           # Universal best practices
+│   └── ProjectSpecific/   # Project-specific knowledge
+└── .kt-context/           # AI assistant context and project memory
+\`\`\`
+
+### Implementation Guidelines
+
+- Keep related functionality together
+- Use clear, descriptive naming
+- Document directory purposes in README files
+- Maintain consistent structure across projects
+
+This organization ensures any developer (or AI assistant) can quickly understand and navigate the codebase.
+`;
+
+    // Create GitWorkflowPatterns.md
+    const gitWorkflowContent = `# Git Workflow Patterns
+
+## Professional Version Control Standards
+
+This document defines proven Git workflows that ensure code quality and seamless collaboration.
+
+### Conventional Commits
+
+Use descriptive commit messages that follow this pattern:
+
+\`\`\`
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+\`\`\`
+
+#### Commit Types
+- **feat**: New features
+- **fix**: Bug fixes
+- **docs**: Documentation changes
+- **style**: Code formatting (no logic changes)
+- **refactor**: Code restructuring (no functionality change)
+- **test**: Adding or updating tests
+- **chore**: Maintenance tasks
+
+#### Examples
+\`\`\`
+feat(auth): add user authentication system
+fix(api): resolve data validation error
+docs(readme): update installation instructions
+\`\`\`
+
+### Branch Strategy
+
+- **main**: Production-ready code
+- **feature/feature-name**: New feature development
+- **fix/bug-description**: Bug fixes
+- **docs/documentation-update**: Documentation improvements
+
+### Best Practices
+
+1. Commit early and often
+2. Write descriptive commit messages
+3. Review changes before committing
+4. Keep commits focused on single changes
+5. Use pull requests for code review
+
+These patterns ensure clear project history and enable effective AI assistant understanding of development progression.
+`;
+
+    // Create DocumentationFramework.md
+    const docsFrameworkContent = `# Documentation Framework
+
+## Knowledge Capture and Transfer Standards
+
+This framework ensures comprehensive documentation that enables seamless project understanding and handoffs.
+
+### Documentation Types
+
+#### 1. Project Documentation
+- **README.md**: Project overview, setup, and usage
+- **API_DOCUMENTATION.md**: API endpoints and usage examples
+- **CHANGELOG.md**: Version history and notable changes
+
+#### 2. Code Documentation
+- Inline comments for complex logic
+- Function and class documentation
+- Architecture decision records (ADRs)
+
+#### 3. Process Documentation
+- Development workflows
+- Deployment procedures
+- Testing strategies
+
+### Documentation Standards
+
+#### Writing Guidelines
+- Use clear, concise language
+- Include practical examples
+- Keep documentation current with code changes
+- Structure information logically
+
+#### Markdown Best Practices
+- Use consistent heading hierarchy
+- Include code examples with syntax highlighting
+- Add tables for structured information
+- Use lists for step-by-step procedures
+
+### AI Assistant Integration
+
+Documentation should enable AI assistants to:
+- Understand project context immediately
+- Provide accurate guidance
+- Maintain consistency across sessions
+- Support effective handoffs between developers
+
+### Maintenance
+
+- Review documentation during code reviews
+- Update docs when features change
+- Archive outdated information
+- Validate examples regularly
+
+This framework ensures knowledge is preserved and accessible to both human developers and AI assistants.
+`;
+
+    // Create ProtocolEvolutionFramework.md
+    const protocolEvolutionContent = `# Protocol Evolution Framework
+
+## Continuous Improvement and Knowledge Sharing System
+
+This framework enables Knowledge Transfer Protocols to evolve and improve through practical application.
+
+### Evolution Principles
+
+1. **Experience-Driven**: Protocols improve based on real-world usage
+2. **Evidence-Based**: Changes supported by data and outcomes
+3. **Community-Informed**: Shared learnings across projects and teams
+4. **AI-Optimized**: Enhanced for AI assistant understanding and application
+
+### Feedback Collection
+
+#### Development Insights
+- What patterns worked well?
+- Which processes caused friction?
+- Where did handoffs fail?
+- How did AI assistance perform?
+
+#### Project Outcomes
+- Development velocity metrics
+- Code quality indicators
+- Team satisfaction scores
+- Knowledge transfer effectiveness
+
+### Protocol Updates
+
+#### Version Control
+- Semantic versioning for protocol changes
+- Clear migration guides between versions
+- Backward compatibility considerations
+- Deprecation timelines for outdated practices
+
+#### Distribution
+- Centralized protocol repository
+- Automated updates through CLI tools
+- Project-specific customizations
+- Cross-project learning integration
+
+### Measurement and Analytics
+
+#### Success Metrics
+- Time to project understanding for new team members
+- AI assistant effectiveness ratings
+- Code review efficiency
+- Project handoff success rates
+
+#### Continuous Monitoring
+- Protocol compliance tracking
+- Outcome correlation analysis
+- Best practice identification
+- Knowledge gap detection
+
+### Community Contribution
+
+- Protocol improvement proposals
+- Case study sharing
+- Tool enhancement suggestions
+- Success story documentation
+
+This framework ensures Knowledge Transfer Protocols remain current, effective, and continuously improving through collective experience.
+`;
+
+    // Write the protocol files
+    fs.writeFileSync(path.join(targetPath, 'CodeOrganizationFramework.md'), codeOrgContent);
+    fs.writeFileSync(path.join(targetPath, 'GitWorkflowPatterns.md'), gitWorkflowContent);
+    fs.writeFileSync(path.join(targetPath, 'DocumentationFramework.md'), docsFrameworkContent);
+    fs.writeFileSync(path.join(targetPath, 'ProtocolEvolutionFramework.md'), protocolEvolutionContent);
+    
+    console.log('✅ Created basic Knowledge Transfer Protocols');
+  }
+
+  /**
    * Initialize git repository with first commit
    */
   initializeGit(projectPath, projectName) {
